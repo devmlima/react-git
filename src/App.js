@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+
+import CardUser from "./Pages/CardUser/CardUser";
+import FilterUser from "./Pages/FilterUser/FilterUser";
 
 function App() {
+  const [user, setUser] = React.useState(null);
+  const [nameUser, setNameUser] = React.useState("");
+  const [search, setSearch] = React.useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="container">
+      <CardUser
+        user={user}
+        nameUser={nameUser}
+        setSearch={(value) => setSearch(value)}
+      />
+
+      {search && (
+        <FilterUser
+          setUser={(value) => setUser(value)}
+          setNameUser={(value) => setNameUser(value)}
+        />
+      )}
+    </section>
   );
 }
 
