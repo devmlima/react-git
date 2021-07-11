@@ -11,7 +11,6 @@ function RepositoriesOrStarred({ nameUser, type, handleSearch }) {
       fetch(`${apiGit}/users/${nameUser}/${type}`)
         .then((response) => response.json())
         .then((json) => {
-          console.log(json);
           setRepos(json);
         });
     }
